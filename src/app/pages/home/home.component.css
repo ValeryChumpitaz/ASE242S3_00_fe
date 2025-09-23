@@ -1,0 +1,220 @@
+/* --- General --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* --- Hero --- */
+.hero {
+  background: linear-gradient(rgba(13,71,161,0.6), rgba(13,71,161,0.6)),
+              url('https://source.unsplash.com/1600x600/?business,office') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 160px 20px;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  animation: fadeIn 1s ease-in;
+}
+.hero h1 span {
+  color: #ffeb3b;
+}
+.hero p {
+  font-size: 1.4rem;
+  margin: 20px 0 30px;
+  animation: fadeIn 1.5s ease-in;
+}
+.btn-primary {
+  background: #ffeb3b;
+  color: #0d47a1;
+  padding: 15px 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: #fdd835;
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* --- Sobre Nosotros + Servicios --- */
+.about-services .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  padding: 80px 20px;
+}
+.about, .services {
+  flex: 1 1 400px;
+}
+.about h2, .services h2 {
+  color: #0d47a1;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+.about p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+.about-image {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+/* Tarjetas de Servicios */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+.card {
+  background: #e3f2fd;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+.card h3 {
+  margin: 10px 0;
+  color: #0d47a1;
+}
+.card p {
+  color: #333;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+/* --- Equipo --- */
+.team {
+  background: #f5f5f5;
+  padding: 80px 20px;
+  text-align: center;
+}
+.team h2 {
+  font-size: 2.5rem;
+  color: #0d47a1;
+  margin-bottom: 50px;
+}
+.members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+.member {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.member img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+.member h3 {
+  color: #0d47a1;
+  margin: 0;
+}
+.member p {
+  color: #555;
+  margin-top: 5px;
+}
+.member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* --- Contacto --- */
+.contact {
+  padding: 80px 20px;
+  background: #fff;
+}
+.contact h2 {
+  color: #0d47a1;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.contact-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.contact form {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact input, .contact textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.contact button {
+  background: #0d47a1;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.contact button:hover {
+  background: #08306b;
+  transform: translateY(-3px) scale(1.05);
+}
+.contact-image {
+  flex: 1 1 350px;
+}
+.contact-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* --- Responsive --- */
+@media(max-width:900px){
+  .about-services .container, .contact-flex {
+    flex-direction: column;
+  }
+  .contact-image img {
+    height: 300px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
