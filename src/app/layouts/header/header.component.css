@@ -1,35 +1,45 @@
+/* Contenedor principal */
 .header {
-  background: #0d47a1;
-  color: #fff;
+  background: linear-gradient(90deg, #2563eb, #4f46e5, #9333ea); /* azul a morado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+/* Alineación de logo y menú */
 .header .container {
-  width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+/* Logo */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
   letter-spacing: 1px;
 }
+
+/* Menú */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
+
+.nav-links li a {
+  color: #ffffff;
+  font-size: 1rem;
   font-weight: 500;
-  transition: color .3s ease;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
-.nav-links a:hover {
-  color: #ffeb3b;
+
+.nav-links li a:hover {
+  color: #fbbf24; /* amarillo dorado al pasar */
 }
