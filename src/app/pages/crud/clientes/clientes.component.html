@@ -1,36 +1,38 @@
 <div class="container">
   <h2>Gestión de Clientes</h2>
 
-<form (ngSubmit)="guardar()" #formCliente="ngForm" class="form">
-  <input 
-    type="text" 
-    placeholder="Nombre" 
-    [(ngModel)]="clienteActual.nombre" 
-    name="nombre" 
-    #nombre="ngModel"
-    required>
-  <div *ngIf="nombre.invalid && nombre.touched" class="error">
-    El nombre es obligatorio.
-  </div>
+  <!-- ✅ CAMBIO 1: En formularios reactivos se usa [formGroup] en lugar de #formCliente="ngForm" -->
+  <form [formGroup]="formCliente" (ngSubmit)="guardar()" class="form">
 
-  <input 
-    type="email" 
-    placeholder="Correo" 
-    [(ngModel)]="clienteActual.correo" 
-    name="correo" 
-    #correo="ngModel"
-    required 
-    email>
-  <div *ngIf="correo.invalid && correo.touched" class="error">
-    Ingresa un correo válido.
-  </div>
+    <!-- ✅ CAMBIO 2: En lugar de [(ngModel)], usamos formControlName para enlazar los campos -->
+    <input 
+      type="text" 
+      placeholder="Nombre" 
+      formControlName="nombre"
+    />
+    <!-- ✅ CAMBIO 3: Ahora validamos accediendo al control desde el FormGroup -->
+    <div *ngIf="formCliente.get('nombre')?.invalid && formCliente.get('nombre')?.touched" class="error">
+      El nombre es obligatorio.
+    </div>
 
-  <button type="submit" [disabled]="formCliente.invalid">
-    {{ editando ? 'Actualizar' : 'Agregar' }}
-  </button>
-  <button type="button" (click)="resetForm()" *ngIf="editando">Cancelar</button>
-</form>
+    <input 
+      type="email" 
+      placeholder="Correo" 
+      formControlName="correo"
+    />
+    <div *ngIf="formCliente.get('correo')?.invalid && formCliente.get('correo')?.touched" class="error">
+      Ingresa un correo válido.
+    </div>
 
+    <!-- ✅ CAMBIO 4: [disabled] ahora depende del estado del FormGroup -->
+    <button type="submit" [disabled]="formCliente.invalid">
+      {{ editando ? 'Actualizar' : 'Agregar' }}
+    </button>
+
+    <button type="button" (click)="resetForm()" *ngIf="editando">Cancelar</button>
+  </form>
+
+  <!-- ✅ La tabla no cambia, sigue igual -->
   <table>
     <thead>
       <tr>
