@@ -22,3 +22,24 @@
         <button type="submit" class="btn-guardar">Guardar Venta</button>
     </form>
 </hr>
+<h2>Ventas Registradas</h2>
+<table class="tabla-ventas" *ngIf = "ventas.length"> 0; else sinVentas >
+    <thead>
+        <tr>
+            <th> Cliente </th>
+            <th> Fecha </th>
+            <th> Total </th>
+        </tr>
+    </thead>
+    <body>
+        <tr *ngFor = "let v of ventas" >
+            <td> {{v.cliente.nombre}} </td>
+            <td> {{v.fecha | date: 'short'}} </td>
+            <td> S/ {{v.total | number: '1.2-2' }}</td>
+        </tr>
+    </body>
+</table>
+<ng-template #sinVentas>
+    <p class="mensaje-vacio">Aun no hay ventas registradas.</p>
+</ng-template>
+</div>
