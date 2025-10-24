@@ -56,8 +56,22 @@ export class VentasComponent implements OnInit {
       {id: 3, nombre: 'Teclado Lenovo', precio: 35 },
 
     ];
-    
-
+    this.formVenta = this.fb.group({
+      cliente: [null, Validators.required],
+      detalles: this.fb.array([])
+    });
+    this.agregarDetalle();
+  }
+  get detalles(): FormArray {
+    return this.formVenta.get('detalles') as FormArray;
   }
   
-}
+  agregarDetalle(): void {
+    const detalleForm = this.fb.group({
+      producto: [null, Validators.required],
+      cantidad: [1, [Validators.required, Validators.min(1)]],
+      subtotal: [0]
+    });
+    this.detalles.push(detalleForm)
+    }
+} 
