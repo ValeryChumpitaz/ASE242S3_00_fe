@@ -32,3 +32,32 @@ interface Venta {
   imports: [CommonModule, ReactiveFormsModule],  templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
+
+export class VentasComponent implements OnInit {
+ 
+  formVenta!: FormGroup;
+  clientes: Cliente[] = [];
+  productos: Producto [] = [];
+  ventas: Venta [] = [];
+  total = 0;
+
+  constructor(private fb: FormBuilder){}
+
+  ngOnInit(): void {
+    this.clientes = [
+      {id: 1, nombre: 'Valery Chumpitaz'},
+      {id: 2, nombre: 'Ana Torres'},
+      {id: 3, nombre: 'Maria Lopez'},
+      {id: 4, nombre: 'Piero Torres'},
+    ];
+    this.productos = [
+      {id: 1, nombre: 'Laptop Lenovo', precio: 15 },
+      {id: 2, nombre: 'Mause Lenovo', precio: 20 },
+      {id: 3, nombre: 'Teclado Lenovo', precio: 35 },
+
+    ];
+    
+
+  }
+  
+}
