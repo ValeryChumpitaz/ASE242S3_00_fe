@@ -12,7 +12,10 @@
                 <option value=""> Producto </option>
                 <option *ngFor = "let p of productos" [ngValue] = "p" > {{p.nombre}} (S/ {{p.precio}}) </option>
                 </select>
+                <input type="number" formControlName = "cantidad"(input) = "calcularSubTotal(i)" min ="1" />
+                <input type="tex" formControlName = "subTotal" readonly />
             </div>
 
         </div>
     </form>
+ =
