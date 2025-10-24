@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>Registrar Venta</h2>
+    <form [formGroup] = "formVenta" (ngSubmit) = "guardar()" class="formulario">
+        <label> Cliente: </label>
+        <select formControlName= "cliente">
+            <option value=""> Seleccione Cliente </option>
+            <option *ngFor = "let c of clientes" [ngValue] = "c" > {{c.nombre}} </option>
+        </select>
+    </form>
+    
