@@ -6,5 +6,13 @@
             <option value=""> Seleccione Cliente </option>
             <option *ngFor = "let c of clientes" [ngValue] = "c" > {{c.nombre}} </option>
         </select>
+        <div formArrayName="detalles" class="detalles">
+            <div *ngFor = "let detalle of detalles.controls; let i = index" [formGroupName] = "i" class="detalle-item">
+                <select formCControlName = "producto" (change) = "calcularSubTotal(i)">
+                <option value=""> Producto </option>
+                <option *ngFor = "let p of productos" [ngValue] = "p" > {{p.nombre}} (S/ {{p.precio}}) </option>
+                </select>
+            </div>
+
+        </div>
     </form>
-    
