@@ -1,44 +1,56 @@
 <div class="container">
-    <h2>Registrar Venta</h2>
-    <form [formGroup] = "formVenta" (ngSubmit) = "guardar()" class="formulario">
-        <label> Cliente: </label>
-        <select formControlName= "cliente">
-            <option value=""> Seleccione Cliente </option>
-            <option *ngFor = "let c of clientes" [ngValue] = "c" > {{c.nombre}} </option>
+  <h2>🧾 Registrar Venta</h2>
+
+  <form [formGroup]="formVenta" (ngSubmit)="guardar()" class="formulario">
+    <label>Cliente:</label>
+    <select formControlName="cliente">
+      <option value="">-- Seleccione Cliente --</option>
+      <option *ngFor="let c of clientes" [ngValue]="c">{{ c.nombre }}</option>
+    </select>
+
+    <div formArrayName="detalles" class="detalles">
+      <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="detalle-item">
+        <select formControlName="producto" (change)="calcularSubtotal(i)">
+          <option value="">-- Producto --</option>
+          <option *ngFor="let p of productos" [ngValue]="p">{{ p.nombre }} (S/ {{ p.precio }})</option>
         </select>
-        <div formArrayName="detalles" class="detalles">
-            <div *ngFor = "let detalle of detalles.controls; let i = index" [formGroupName] = "i" class="detalle-item">
-                <select formCControlName = "producto" (change) = "calcularSubTotal(i)">
-                <option value=""> Producto </option>
-                <option *ngFor = "let p of productos" [ngValue] = "p" > {{p.nombre}} (S/ {{p.precio}}) </option>
-                </select>
-                <input type="number" formControlName = "cantidad"(input) = "calcularSubTotal(i)" min ="1" />
-                <input type="tex" formControlName = "subTotal" readonly />
-                <button type="button" (click) = "eliminarDetalle(i)" class="btn-eliminar"> Eliminar </button>
-            </div>
-        </div>
-        <button type="button" (click) ="agregarDetalle()" class="btn-agregar">Agregar Producto </button>
-        <h3>Total: <span class="total"> S/ {{total | number:'1.2-2' }}</span></h3>
-        <button type="submit" class="btn-guardar">Guardar Venta</button>
-    </form>
-<h2>Ventas Registradas</h2>
-<table class="tabla-ventas" *ngIf = "ventas.length"> 0; else sinVentas >
+
+        <input type="number" formControlName="cantidad" (input)="calcularSubtotal(i)" min="1" />
+        <input type="text" formControlName="subtotal" readonly />
+
+        <button type="button" (click)="eliminarDetalle(i)" class="btn-eliminar">🗑️</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="agregarDetalle()" class="btn-agregar"> Agregar producto</button>
+
+    <h3>Total: <span class="total">S/ {{ total | number:'1.2-2' }}</span></h3>
+
+    <button type="submit" class="btn-guardar">💾 Guardar Venta</button>
+  </form>
+
+  <hr />
+
+  <h2>📋 Ventas Registradas</h2>
+
+  <table class="tabla-ventas" *ngIf="ventas.length > 0; else sinVentas">
     <thead>
-        <tr>
-            <th> Cliente </th>
-            <th> Fecha </th>
-            <th> Total </th>
-        </tr>
+      <tr>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
     </thead>
-    <body>
-        <tr *ngFor = "let v of ventas" >
-            <td> {{v.cliente.nombre}} </td>
-            <td> {{v.fecha | date: 'short'}} </td>
-            <td> S/ {{v.total | number: '1.2-2' }}</td>
-        </tr>
-    </body>
-</table>
-<ng-template #sinVentas>
-    <p class="mensaje-vacio">Aun no hay ventas registradas.</p>
-</ng-template>
+    <tbody>
+      <tr *ngFor="let v of ventas">
+        <td>{{ v.cliente.nombre }}</td>
+        <td>{{ v.fecha | date:'short' }}</td>
+        <td>S/ {{ v.total | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #sinVentas>
+    <p class="mensaje-vacio"> Aún no hay ventas registradas.</p>
+  </ng-template>
 </div>

@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 interface Cliente {
   id: number;
@@ -28,6 +29,8 @@ interface Venta {
 @Component({
   selector: 'app-ventas',
   standalone: true,
+    imports: [CommonModule, ReactiveFormsModule],
+
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
