@@ -14,8 +14,11 @@
                 </select>
                 <input type="number" formControlName = "cantidad"(input) = "calcularSubTotal(i)" min ="1" />
                 <input type="tex" formControlName = "subTotal" readonly />
+                <button type="button" (click) = "eliminarDetalle(i)" class="btn-eliminar"> Eliminar </button>
             </div>
-
         </div>
+        <button type="button" (click) ="agregarDetalle()" class="btn-agregar">Agregar Producto </button>
+        <h3>Total: <span class="total"> S/ {{total | number:'1.2-2' }}</span></h3>
+        <button type="submit" class="btn-guardar">Guardar Venta</button>
     </form>
- =
+</hr>
